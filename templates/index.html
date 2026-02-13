@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Password Strength Analyzer</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="box">
+    <h2>🔐 Password Strength Analyzer</h2>
+
+    <input 
+        type="password" 
+        id="password"
+        placeholder="Enter your password"
+        onkeyup="checkPassword()"
+    >
+
+    <div class="meter">
+        <div id="bar"></div>
+    </div>
+
+    <h3 id="result"></h3>
+    <p id="details"></p>
+</div>
+
+<script src="/static/script.js"></script>
+</body>
+</html>
