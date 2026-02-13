@@ -1,4 +1,4 @@
-/* RESET */
+/* ===== GLOBAL RESET ===== */
 * {
   margin: 0;
   padding: 0;
@@ -6,107 +6,160 @@
   font-family: "Courier New", monospace;
 }
 
-/* BODY - Hacker background */
+/* ===== BODY - DARK MATRIX BG ===== */
 body {
   height: 100vh;
-  background: radial-gradient(circle at center, #020024, #000000 70%);
+  background: #000;
   display: flex;
   justify-content: center;
   align-items: center;
   color: #00ff9c;
+  overflow: hidden;
 }
 
-/* MAIN CARD */
+/* Animated scanlines */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(0, 255, 156, 0.05),
+    rgba(0, 255, 156, 0.05) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  pointer-events: none;
+}
+
+/* ===== MAIN CARD ===== */
 .box {
-  background: rgba(0, 0, 0, 0.7);
-  border: 1px solid #00ff9c33;
-  padding: 30px 40px;
+  background: rgba(0, 0, 0, 0.75);
+  border: 1px solid #00ff9c55;
+  padding: 35px 40px;
   border-radius: 15px;
-  width: 350px;
+  width: 360px;
   text-align: center;
+  position: relative;
 
   /* Neon glow */
-  box-shadow: 
+  box-shadow:
     0 0 10px #00ff9c,
-    0 0 25px #00ff9c33,
-    inset 0 0 15px #00ff9c22;
+    0 0 30px #00ff9c33,
+    inset 0 0 20px #00ff9c22;
 
   backdrop-filter: blur(10px);
 }
 
-/* TITLE */
+/* Subtle flicker animation */
+@keyframes flicker {
+  0%, 100% { opacity: 0.95; }
+  50% { opacity: 1; }
+}
+.box {
+  animation: flicker 2s infinite;
+}
+
+/* ===== TITLE ===== */
 h2 {
   margin-bottom: 20px;
   color: #00ff9c;
-  text-shadow: 0 0 10px #00ff9c;
+  text-shadow: 0 0 8px #00ff9c, 0 0 15px #00ff9c;
   letter-spacing: 1px;
 }
 
-/* INPUT FIELD */
+/* ===== INPUT FIELD ===== */
 input {
   width: 100%;
   padding: 12px;
   border-radius: 6px;
-  border: 1px solid #00ff9c55;
+  border: 1px solid #00ff9c44;
   background: #000;
   color: #00ff9c;
   outline: none;
-  margin-bottom: 15px;
+  margin-bottom: 18px;
+  font-size: 15px;
 
-  box-shadow: inset 0 0 10px #00ff9c22;
+  box-shadow: inset 0 0 8px #00ff9c22;
 }
 
-/* INPUT FOCUS GLOW */
+/* Glow on focus */
 input:focus {
   border-color: #00ff9c;
-  box-shadow: 0 0 8px #00ff9c;
+  box-shadow: 0 0 10px #00ff9c;
 }
 
-/* STRENGTH BAR CONTAINER */
+/* ===== METER ===== */
 .meter {
   width: 100%;
   height: 10px;
   background: #111;
-  border-radius: 10px;
+  border-radius: 20px;
   overflow: hidden;
-  margin-bottom: 15px;
+  margin-bottom: 18px;
+  border: 1px solid #00ff9c33;
 }
 
-/* BAR */
+/* Strength bar */
 #bar {
   height: 100%;
   width: 0%;
   background: red;
-  border-radius: 10px;
-
-  /* Smooth animation */
+  border-radius: 20px;
   transition: all 0.4s ease;
 
-  /* Glow */
-  box-shadow: 0 0 8px currentColor;
+  /* neon glow */
+  box-shadow: 0 0 8px currentColor, 0 0 15px currentColor;
 }
 
-/* RESULT TEXT */
+/* ===== RESULT TEXT ===== */
 #result {
   margin-top: 10px;
   font-weight: bold;
   text-shadow: 0 0 6px currentColor;
+  font-size: 18px;
 }
 
-/* DETAILS TEXT */
+/* DETAILS */
 #details {
   font-size: 0.9rem;
-  opacity: 0.8;
+  opacity: 0.85;
   margin-top: 5px;
 }
 
-/* OPTIONAL: MATRIX BLINK EFFECT */
-@keyframes flicker {
-  0% { opacity: 0.8; }
-  50% { opacity: 1; }
-  100% { opacity: 0.85; }
+/* CRACK TIME */
+#crackTime {
+  margin-top: 8px;
+  font-size: 0.85rem;
+  color: #00ff9c;
+  text-shadow: 0 0 6px #00ff9c;
 }
 
-.box {
-  animation: flicker 2s infinite;
+/* ===== CURSOR BLINK EFFECT ===== */
+input::placeholder {
+  color: #00ff9c66;
+}
+
+/* ===== TERMINAL CORNERS ===== */
+.box::before,
+.box::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #00ff9c;
+}
+
+.box::before {
+  top: -2px;
+  left: -2px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.box::after {
+  bottom: -2px;
+  right: -2px;
+  border-left: none;
+  border-top: none;
 }
