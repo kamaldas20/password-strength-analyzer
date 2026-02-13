@@ -1,56 +1,112 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Courier New", monospace;
+}
+
+/* BODY - Hacker background */
 body {
-    background: #020617;
-    font-family: Arial, sans-serif;
-    color: white;
+  height: 100vh;
+  background: radial-gradient(circle at center, #020024, #000000 70%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #00ff9c;
 }
 
-/* Main box */
+/* MAIN CARD */
 .box {
-    width: 350px;
-    margin: 100px auto;
-    padding: 20px;
-    background: #020617;
-    border-radius: 10px;
-    text-align: center;
-    box-shadow: 0 0 15px #0ea5e9;
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid #00ff9c33;
+  padding: 30px 40px;
+  border-radius: 15px;
+  width: 350px;
+  text-align: center;
+
+  /* Neon glow */
+  box-shadow: 
+    0 0 10px #00ff9c,
+    0 0 25px #00ff9c33,
+    inset 0 0 15px #00ff9c22;
+
+  backdrop-filter: blur(10px);
 }
 
-/* Input box */
+/* TITLE */
+h2 {
+  margin-bottom: 20px;
+  color: #00ff9c;
+  text-shadow: 0 0 10px #00ff9c;
+  letter-spacing: 1px;
+}
+
+/* INPUT FIELD */
 input {
-    width: 90%;
-    padding: 10px;
-    font-size: 16px;
-    margin-top: 10px;
-    border-radius: 5px;
-    border: none;
+  width: 100%;
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid #00ff9c55;
+  background: #000;
+  color: #00ff9c;
+  outline: none;
+  margin-bottom: 15px;
+
+  box-shadow: inset 0 0 10px #00ff9c22;
 }
 
-/* Strength meter background */
+/* INPUT FOCUS GLOW */
+input:focus {
+  border-color: #00ff9c;
+  box-shadow: 0 0 8px #00ff9c;
+}
+
+/* STRENGTH BAR CONTAINER */
 .meter {
-    width: 100%;
-    height: 10px;
-    background: #334155;
-    margin-top: 15px;
-    border-radius: 5px;
+  width: 100%;
+  height: 10px;
+  background: #111;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 15px;
 }
 
-/* Strength meter bar */
+/* BAR */
 #bar {
-    height: 10px;
-    width: 0%;
-    border-radius: 5px;
-    transition: width 0.3s;
+  height: 100%;
+  width: 0%;
+  background: red;
+  border-radius: 10px;
+
+  /* Smooth animation */
+  transition: all 0.4s ease;
+
+  /* Glow */
+  box-shadow: 0 0 8px currentColor;
 }
 
-/* Result text */
+/* RESULT TEXT */
 #result {
-    margin-top: 10px;
-    font-size: 20px;
+  margin-top: 10px;
+  font-weight: bold;
+  text-shadow: 0 0 6px currentColor;
 }
 
-/* Details text */
+/* DETAILS TEXT */
 #details {
-    font-size: 14px;
-    margin-top: 5px;
-    color: #cbd5f5;
+  font-size: 0.9rem;
+  opacity: 0.8;
+  margin-top: 5px;
+}
+
+/* OPTIONAL: MATRIX BLINK EFFECT */
+@keyframes flicker {
+  0% { opacity: 0.8; }
+  50% { opacity: 1; }
+  100% { opacity: 0.85; }
+}
+
+.box {
+  animation: flicker 2s infinite;
 }
