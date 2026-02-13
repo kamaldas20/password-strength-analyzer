@@ -1,7 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>Password Strength Analyzer</title>
+
+    <!-- CSS -->
     <link rel="stylesheet" href="static/style.css">
 </head>
 <body>
@@ -9,21 +12,28 @@
 <div class="box">
     <h2>🔐 Password Strength Analyzer</h2>
 
+    <!-- Password Input -->
     <input 
-        type="password" 
+        type="password"
         id="password"
         placeholder="Enter your password"
-        onkeyup="checkPassword()"
+        oninput="checkPassword()"
     >
 
+    <!-- Strength Bar -->
     <div class="meter">
         <div id="bar"></div>
     </div>
 
+    <!-- Results -->
     <h3 id="result"></h3>
     <p id="details"></p>
+    <p id="crackTime"></p> <!-- Exact crack time -->
+
 </div>
 
+<!-- JS -->
 <script src="static/script.js"></script>
+
 </body>
 </html>
