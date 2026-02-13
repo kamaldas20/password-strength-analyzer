@@ -1,32 +1,39 @@
 function checkPassword() {
-    let pwd = document.getElementById("password").value;
+    const password = document.getElementById("password").value;
+    const bar = document.getElementById("bar");
+    const result = document.getElementById("result");
+    const details = document.getElementById("details");
 
-    fetch("/check", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ password: pwd })
-    })
-    .then(response => response.json())
-    .then(data => {
-        document.getElementById("result").innerText = data.strength;
-        document.getElementById("details").innerHTML =
-            "Entropy: " + data.entropy + "<br>Crack Time: " + data.crack_time;
+    let strength = 0;
 
-        let bar = document.getElementById("bar");
+    if (password.length >= 6) strength++;
+    if (password.match(/[A-Z]/)) strength++;
+    if (password.match(/[0-9]/)) strength++;
+    if (password.match(/[@$!%*?&]/)) strength++;
 
-        if (data.strength === "Weak") {
-            bar.style.width = "30%";
-            bar.style.background = "red";
-        } 
-        else if (data.strength === "Medium") {
-            bar.style.width = "60%";
-            bar.style.background = "orange";
-        } 
-        else {
-            bar.style.width = "100%";
-            bar.style.background = "Blue";
-        }
-    });
+    // Update bar width
+    bar.style.width = (strength * 25) + "%";
+
+    // Strength text
+    if (strength <= 1) {
+        bar.style.background = "red";
+        result.innerText = "Weak Password";
+        details.innerText = "Add uppercase, number, and symbol.";
+    } 
+    else if (strength === 2) {
+        bar.style.background = "orange";
+        result.innerText = "Medium Password";
+        details.innerText = "Try adding symbols.";
+    } 
+    else if (strength === 3) {
+        bar.style.background = "yellow";
+        result.innerText = "Strong Password";
+        details.innerText = "Almost perfect!";
+    } 
+    else {
+        bar.style.background = "lime";
+        result.innerText = "Very Strong Password 🔥";
+        details.innerText = "Excellent security!";
+    }
 }
+
