@@ -1,0 +1,56 @@
+body {
+    background: #020617;
+    font-family: Arial, sans-serif;
+    color: white;
+}
+
+/* Main box */
+.box {
+    width: 350px;
+    margin: 100px auto;
+    padding: 20px;
+    background: #020617;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 0 15px #0ea5e9;
+}
+
+/* Input box */
+input {
+    width: 90%;
+    padding: 10px;
+    font-size: 16px;
+    margin-top: 10px;
+    border-radius: 5px;
+    border: none;
+}
+
+/* Strength meter background */
+.meter {
+    width: 100%;
+    height: 10px;
+    background: #334155;
+    margin-top: 15px;
+    border-radius: 5px;
+}
+
+/* Strength meter bar */
+#bar {
+    height: 10px;
+    width: 0%;
+    border-radius: 5px;
+    transition: width 0.3s;
+}
+
+/* Result text */
+#result {
+    margin-top: 10px;
+    font-size: 20px;
+}
+
+/* Details text */
+#details {
+    font-size: 14px;
+    margin-top: 5px;
+    color: #cbd5f5;
+}
